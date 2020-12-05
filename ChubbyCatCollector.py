@@ -20,8 +20,10 @@ class Controller:
 # will also be used to bring up a 'help' and 'quit game' display.
 
     # Functions related to up,down, left, right arrow input:
-    # Function related to display response with H key (help)
-    # Funtion related to display response with Q key (quit)
+
+    # Function related to display response with H key (help) --- key name: pygame.K_h
+    # Funtion related to display response with Q key (quit) --- key name: pygame.k_q 
+        # there may be a quick default quit method but would like to include a "are you sure" display
 
 
 class Model:
