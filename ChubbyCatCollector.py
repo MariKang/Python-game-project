@@ -20,6 +20,8 @@ class Controller:
 # will also be used to bring up a 'help' and 'quit game' display.
 
     # Functions related to up,down, left, right arrow input:
+    # Function related to display response with H key (help)
+    # Funtion related to display response with Q key (quit)
 
 
 class Model:
