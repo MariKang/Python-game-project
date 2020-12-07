@@ -22,8 +22,22 @@ class Visual:
 class Controller:
 # what does this class do: takes the user's input from the up, down, left, and right arrows and translates them into motion of the cat sprite.
 # will also be used to bring up a 'help' and 'quit game' display.
-
+    def __init__(self,model):
+        self.model = model
     # Functions related to up,down, left, right arrow input:
+    pressed = pygame.key.get_pressed()
+
+    if pressed[pygame.K_UP]:
+        self.model._cat.vy = 1
+    elif pressed[pygame.K_DOWN]:
+        self.model._cat.vy = -1
+    elif presssed[pygame.K_RIGHT]:
+        self.model._cat.vx = 1
+    elif presssed[pygame.K_LEFT]:
+        self.model._cat.vx = -1
+    else:
+        self.model._cat.vy = 0
+        self.model._cat.vx = 0
 
     # Function related to display response with H key (help) --- key name: pygame.K_h
     # Funtion related to display response with Q key (quit) --- key name: pygame.k_q 
