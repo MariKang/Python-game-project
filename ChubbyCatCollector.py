@@ -1,6 +1,9 @@
 import itertools
 import random
 import sys
+import pygame
+from pygame.locals import *
+import time
 
 class Visual:
 # what does this class do: this class ocuses on what the user will see; the constantly updating game play, location of the various sprites,
