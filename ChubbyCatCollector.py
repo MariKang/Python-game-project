@@ -27,8 +27,9 @@ class Controller:
     # Functions related to up,down, left, right arrow input:
     pressed = pygame.key.get_pressed()
 
+    # for vy/vx will need to mention or edit in Model class:
     if pressed[pygame.K_UP]:
-        self.model._cat.vy = 1
+        self.model._cat.vy = 1 
     elif pressed[pygame.K_DOWN]:
         self.model._cat.vy = -1
     elif presssed[pygame.K_RIGHT]:
