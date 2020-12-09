@@ -27,6 +27,7 @@ class Controller:
         self.model._cat.vy = vy
         self.model._cat.vx = vx
 
+    def arrow_keys():
         # Functions related to up,down, left, right arrow input:
         pressed = pygame.key.get_pressed()
         
@@ -44,10 +45,16 @@ class Controller:
             self.model._cat.vx = 0
 
     # Function related to display response with H key (help) --- key name: pygame.K_h
-    # Funtion related to display response with Q key (quit) --- key name: pygame.k_q 
-        # there may be a quick default quit method but would like to include a "are you sure" display
-    pass
+    def help_key():
+        if pressed[pygame.K_h]:
+            # display help visual
 
+    # Function related to display response with Q key (quit) --- key name: pygame.k_q 
+    # there may be a quick default quit method but would like to include a "are you sure" display
+        # may not be in this section could occur in Model or game loop
+    def quit_key():
+        if pressed[pygame.K_q]:
+            pygame.quit()
 
 class Model:
 # what does this class do: handles the back end of game play with five main sections to take into account:
