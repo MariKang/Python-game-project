@@ -24,37 +24,37 @@ class Controller:
 # will also be used to bring up a 'help' and 'quit game' display.
     def __init__(self,model):
         self.model = model
-        self.model._cat.vy = vy
-        self.model._cat.vx = vx
+        self.model._cat.vy = 0
+        self.model._cat.vx = 0
 
-    def arrow_keys():
+    def arrow_keys(self):
         # Functions related to up,down, left, right arrow input:
-        pressed = pygame.key.get_pressed()
+        self.pressed = pygame.key.get_pressed()
         
         # for vy/vx will need to mention or edit in Model class:
-        if pressed[pygame.K_UP]:
-            self.model._cat.vy = 1 
-        elif pressed[pygame.K_DOWN]:
+        if self.pressed.pygame.K_UP:
+            self.model._cat.vy = 1 # "1" = 1 frame/s
+        elif self.pressed.pygame.K_DOWN:
             self.model._cat.vy = -1
-        elif presssed[pygame.K_RIGHT]:
+        elif self.pressed.pygame.K_RIGHT:
             self.model._cat.vx = 1
-        elif presssed[pygame.K_LEFT]:
+        elif self.pressed.pygame.K_LEFT:
             self.model._cat.vx = -1
         else:
             self.model._cat.vy = 0
             self.model._cat.vx = 0
 
     # Function related to display response with H key (help) --- key name: pygame.K_h
-    def help_key():
-        if pressed[pygame.K_h]:
+    def help_key(self):
+        if self.pressed.pygame.K_h:
             # display help visual
-
+            pass
     # Function related to display response with Q key (quit) --- key name: pygame.k_q 
     # there may be a quick default quit method but would like to include a "are you sure" display
         # may not be in this section could occur in Model or game loop
-    def quit_key():
-        if pressed[pygame.K_q]:
-            pygame.quit()
+    def quit_key(self):
+        if self.pressed.pygame.K_q:
+            pygame.quit() ## TBD based on gameplay -- maybe VS
 
 class Model:
 # what does this class do: handles the back end of game play with five main sections to take into account:
