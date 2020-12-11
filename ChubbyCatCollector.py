@@ -5,21 +5,39 @@ import pygame
 from pygame.locals import *
 import time
 
-class Visual:
+class Visual(object):
 # what does this class do: this class ocuses on what the user will see; the constantly updating game play, location of the various sprites,
 # the background and surroundings.
 
     # Init:
+    def __init__(self, model, size):
+
+        """
+        Initialize the view with a reference to the model and the specified game
+        screen dimensions (represented as a tuple containing the width and height
+        """
+
+        self._model = model
+        self._screen = pygame.display.set_mode(size)
+
     # Function related to game display with background:
     # Funtions related to the cat sprite:
     # Functions related to the ice cream sprites:
     # Function related to the time visual:
     # Function related to the score visual:
     # Function related to the end of the game:
-    pass
+    
+    def draw(self):
+        """ Draw the current game state to the screen """
+
+        self._screen.fill(pygame.Color(0,0,0))
+
+        pygame.display.set_caption("A Chubby Cat's Adventure")
+
+        #background_image = pygame.image.load("")
 
 
-class Controller:
+class Controller(object):
 # what does this class do: takes the user's input from the up, down, left, and right arrows and translates them into motion of the cat sprite.
 # will also be used to bring up a 'help' and 'quit game' display.
     def __init__(self,model):
@@ -56,15 +74,20 @@ class Controller:
         if self.pressed.pygame.K_q:
             pygame.quit() ## TBD based on gameplay -- maybe VS
 
-class Model:
+class Model(object):
 # what does this class do: handles the back end of game play with five main sections to take into account:
 # 1. the cat sprite, 2. ice creams, 3. Point tracker, 4. Timer, 5. board setup
 
     # Functions related to the intial board
-    def __init__(self):
+    def __init__(self, size):
         """
         Create a new game.
         """
+
+        # Set the size of the window.
+        self.width = size[0]
+        self.height = size[1]
+
         # Set the size of the grid row and column.
         self._grid_row = 20
         self._grid_col = 20
@@ -93,8 +116,8 @@ class Model:
         grid_list.remove([0,0])
 
         random.shuffle(grid_list)
-        icecream_list = grid_list[:10]
-        return icecream_list
+        self._icecream_list = grid_list[:self._icecream_num]
+        return self._icecream_list
 
     def move_cat(self, x, y):
         """
@@ -111,7 +134,48 @@ class Model:
             # add quantity of points to the total
             # when game ends, display total points in 'End Game' sequence
     def is_icecream(self):
-        pass
+        for items in self._icecream_list:
+            if self._cat[0] == items[0] and self._cat[1] == items[1]:
+                self._point += 1
+                self._icecream_list.remove(items)
+                
+
 
     # Functions related to the timer counting down:
         # per round each timer will be set at less and less time
+
+
+
+if __name__ == '__main__':
+    # Start a pygame
+    pygame.init()
+
+    size = (600, 480)
+
+    model = Model(size)
+    print(model)
+    
+    view = Visual(model, size)
+    # controller = Controller(model)
+
+    # Open a Window
+    # pygame.display.set_mode(size)
+
+    # Set title to the window
+    #pygame.display.set_caption("A Chubby Cat's Adventure")
+
+    # Display the Background image
+    # background_image = pygame.image.load("").convert()
+
+    running = True
+    while running:
+        for event in pygame.event.get(): # This will loop through a list of any keyboard or mouse events.
+            if event.type == pygame.QUIT: # Checks if the red button in the corner of the window is clicked
+                running = False # Ends the game loop
+            # Should call a controller method that checks what the event is
+
+        view.draw()
+
+
+    # If we exit the loop this will execute and close our game
+    pygame.quit() 
