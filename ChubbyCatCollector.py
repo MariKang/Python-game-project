@@ -22,7 +22,7 @@ class Visual(object):
         self.background_set()
     # Function related to game display with background:
     def background_set(self):
-        background_image = pygame.image.load("Background.jpeg")
+        background_image = pygame.image.load("Artwork/Background.jpeg")
         # surface = pygame.Surface((100,100))
 
         self._screen.fill((255,255,255))
