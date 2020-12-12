@@ -19,8 +19,15 @@ class Visual(object):
 
         self._model = model
         self._screen = pygame.display.set_mode(size)
-
+        self.background_set()
     # Function related to game display with background:
+    def background_set(self):
+        background_image = pygame.image.load("Background.jpeg")
+        # surface = pygame.Surface((100,100))
+
+        self._screen.fill((255,255,255))
+        self._screen.blit(background_image, (0,0))
+        pygame.display.update()
     # Funtions related to the cat sprite:
     # Functions related to the ice cream sprites:
     # Function related to the time visual:
@@ -150,14 +157,16 @@ if __name__ == '__main__':
     # Start a pygame
     pygame.init()
 
-    size = (600, 480)
-
+    size = (600, 600) # originally 600,480
+    # screen = pygame.display.set_mode(size)
+    # background_image = pygame.image.load("Background.jpeg")
+    # surface = pygame.Surface((100,100))
     model = Model(size)
     print(model)
-    
+
     view = Visual(model, size)
     # controller = Controller(model)
-
+    
     # Open a Window
     # pygame.display.set_mode(size)
 
@@ -166,6 +175,10 @@ if __name__ == '__main__':
 
     # Display the Background image
     # background_image = pygame.image.load("").convert()
+    
+    # screen.fill((255,255,255))
+    # screen.blit(background_image, (0,0))
+    # pygame.display.update()
 
     running = True
     while running:
@@ -174,7 +187,7 @@ if __name__ == '__main__':
                 running = False # Ends the game loop
             # Should call a controller method that checks what the event is
 
-        view.draw()
+        #view.draw()
 
 
     # If we exit the loop this will execute and close our game
