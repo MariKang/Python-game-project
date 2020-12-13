@@ -55,33 +55,17 @@ class Controller(object):
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == pygame.K_UP:
-                    self.cat.vy = -1 # "1" = 1 frame/s
+                    self.cat.vy = -5 # "1" = 1 frame/s
                 elif event.key == pygame.K_DOWN:
-                    self.cat.vy = 1
+                    self.cat.vy = 5
                 elif event.key == pygame.K_RIGHT:
-                    self.cat.vx = 1
+                    self.cat.vx = 5
                 elif event.key == pygame.K_LEFT:
-                    self.cat.vx = -1
+                    self.cat.vx = -5
                 else:
                     self.cat.vy = 0
                     self.cat.vx = 0
 
-        # for vy/vx will need to mention or edit in Cat class:
-        # if self.pressed.pygame.K_UP:
-        #     self.cat.vy = 1 # "1" = 1 frame/s
-        #     print("up")
-        # elif self.pressed.pygame.K_DOWN:
-        #     self.cat.vy = -1
-        #     print("down")
-        # elif self.pressed.pygame.K_RIGHT:
-        #     self.cat.vx = 1
-        #     print("right")
-        # elif self.pressed.pygame.K_LEFT:
-        #     self.cat.vx = -1
-        #     print("left")
-        # else:
-        #     self.cat.vy = 0
-        #     self.cat.vx = 0
 
     # Function related to display response with H key (help) --- key name: pygame.K_h
     def help_key(self):
@@ -128,11 +112,6 @@ class Cat(object):
         rect = pygame.Rect(self._pos[0], self._pos[1],50,50)
         pygame.draw.rect(screen, (255,255,255), rect)
 
-    # Function related to the ice creams:
-        # input how many ice creams are involved
-        # calculate the randomized locations per ice cream
-        # mark each location with a X {marker can change}
-
     def move_cat(self):
         """
         Change the coordinate of the character location following the input direction.
@@ -156,6 +135,10 @@ class Cat(object):
                 
 
 class Icecream():
+    # Function related to the ice creams:
+        # input how many ice creams are involved
+        # calculate the randomized locations per ice cream
+        # mark each location with a X {marker can change}
     def generate_icecream(self):
         """
         Generate and return the position of the ice creams.
