@@ -19,7 +19,7 @@ class Visual(object):
 
         self._model = model
         self._screen = pygame.display.set_mode(size)
-        # self.background_set()
+        self.background_set()
 
     # Function related to game display with background:
     def background_set(self):
@@ -55,21 +55,17 @@ class Controller(object):
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == pygame.K_UP:
-                    self.cat.vy = 10 # "1" = 1 frame/s
-                    print("up")
+                    self.cat.vy = -1 # "1" = 1 frame/s
                 elif event.key == pygame.K_DOWN:
-                    self.cat.vy = -10
-                    print("down")
+                    self.cat.vy = 1
                 elif event.key == pygame.K_RIGHT:
-                    self.cat.vx = 10
-                    print("right")
+                    self.cat.vx = 1
                 elif event.key == pygame.K_LEFT:
-                    self.cat.vx = -10
-                    print("left")
+                    self.cat.vx = -1
                 else:
                     self.cat.vy = 0
                     self.cat.vx = 0
-                    print("cheese")
+
         # for vy/vx will need to mention or edit in Cat class:
         # if self.pressed.pygame.K_UP:
         #     self.cat.vy = 1 # "1" = 1 frame/s
@@ -197,20 +193,21 @@ if __name__ == '__main__':
     # pygame.display.set_mode(size)
 
     # Set title to the window
-    #pygame.display.set_caption("A Chubby Cat's Adventure")
-
+    pygame.display.set_caption("A Chubby Cat's Adventure")
 
     running = True
     while running:
+        
         # for event in pygame.event.get(): # This will loop through a list of any keyboard or mouse events.
         #     if event.type == pygame.QUIT: # Checks if the red button in the corner of the window is clicked
         #         running = False # Ends the game loop
-            # Should call a controller method that checks what the event is
-        
+            # Should call a controller method that checks what the event is       
         controller.arrow_keys()
         cat.move_cat()
         view.draw()
+        view.background_set() 
         cat.draw_cat_loc(view._screen)
+
         pygame.display.flip() # this renders/updates to screen
 
     # If we exit the loop this will execute and close our game
