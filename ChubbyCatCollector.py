@@ -101,7 +101,7 @@ class Cat(object):
         self._pos = [300, 300]
         self.vx = 0
         self.vy = 0
-        self._icecream_num = 10
+        # self._icecream_num = 10
 
         # Set the initial point in this game.
         self._point = 0
@@ -109,7 +109,7 @@ class Cat(object):
     # Function related to tracking the cat's location, marked with a square ([]) {marker can change}:
     def draw_cat_loc(self, screen):
         
-        rect = pygame.Rect(self._pos[0], self._pos[1],50,50)
+        rect = pygame.Rect(self._pos[0], self._pos[1],25,25)
         pygame.draw.rect(screen, (255,255,255), rect)
 
     def move_cat(self):
@@ -133,8 +133,11 @@ class Cat(object):
                 self._point += 1
                 self._icecream_list.remove(items)
                 
-
+## need help with icecream class
 class Icecream():
+    def __init__(self,size):
+        self._icecream_num = 10
+
     # Function related to the ice creams:
         # input how many ice creams are involved
         # calculate the randomized locations per ice cream
@@ -151,12 +154,15 @@ class Icecream():
         grid_list.remove([0,0])
 
         random.shuffle(grid_list)
-        self._icecream_list = grid_list[:self._icecream_num]
+        self._icecream_list = grid_list[self._icecream_num]
         return self._icecream_list
+
+    def draw_icecream_loc(self, screen):
+        rect = pygame.Rect(self._pos[0], self._pos[1],25,25)
+        pygame.draw.rect(screen, (0,0,0), rect)
+
     # Functions related to the timer counting down:
         # per round each timer will be set at less and less time
-
-
 
 if __name__ == '__main__':
     # Start a pygame
@@ -167,7 +173,9 @@ if __name__ == '__main__':
     # background_image = pygame.image.load("Background.jpeg")
     # surface = pygame.Surface((100,100))
     cat = Cat(size)
-    print(cat)
+    # print(cat)
+
+    icecream = Icecream(size)
 
     view = Visual(cat, size)
     controller = Controller(cat)
@@ -190,7 +198,7 @@ if __name__ == '__main__':
         view.draw()
         view.background_set() 
         cat.draw_cat_loc(view._screen)
-
+        icecream.draw_icecream_loc(view._screen)
         pygame.display.flip() # this renders/updates to screen
 
     # If we exit the loop this will execute and close our game
