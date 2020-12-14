@@ -85,7 +85,7 @@ class Model():
         self._grid_col = 20
 
         # Set the initial point in this game.
-        self._point = 0
+        # self._point = 0
 
         self.cat = Cat()
         self.icecream = Icecream(size)
@@ -104,7 +104,7 @@ class Model():
         for items in self._icecream_list:
             dist = self.distance(self.cat._pos, items)
             if dist <= 25:
-                self._point += 1
+                # self._point += 1
                 self._icecream_list.remove(items)
 
     def distance(self, point_a, point_b):
@@ -112,6 +112,7 @@ class Model():
         b = point_b[1] - point_a[1]
         c = (a**2 + b**2)**(1/2)
         return c
+
 class Cat():
 # what does this class do: handles the back end of game play with five main sections to take into account:
 # 1. the cat sprite, 2. ice creams, 3. Point tracker, 4. Timer, 5. board setup
