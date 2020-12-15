@@ -15,5 +15,7 @@ We wanted to create a simple game that incorporated our design skills combined w
 ## The Unique Features:
 
 <figure class="video_container">
-  <iframe src="https://youtu.be/DTMZAqHusDY" frameborder="0" allowfullscreen="true"> </iframe>
+  <iframe src="https://www.youtube.com/watch?v=DTMZAqHusDY" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+
+
