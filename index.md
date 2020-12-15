@@ -13,7 +13,8 @@ We wanted to create a simple game that incorporated our design skills combined w
 3. Successfully collaborate in a remote setting - especially in terms of communication
 
 ## The Unique Features:
-
-[Image](SoftdesF2020_FinalProject_Gaming/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4)
+<figure class="video_container">
+  <iframe src="https://drive.google.com/file/d/1c4bvcBmtwof4GvCzyqHLAR7gxgtXW_zG/view?usp=sharing" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
 
