@@ -18,8 +18,8 @@ We wanted to create a simple game that incorporated our design skills combined w
 </video>
 
 <figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="Semester3/Softdes/final project/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4">
-    <source src="Semester3/Softdes/final project/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4" type="video/mp4">
+  <video controls="true" allowfullscreen="true" poster="SoftdesF2020_FinalProject_Gaming/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4" >
+    <source src="SoftdesF2020_FinalProject_Gaming/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4"  type="video/mp4">
   </video>
 </figure>
 
