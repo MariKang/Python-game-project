@@ -81,15 +81,15 @@ class Controller(object):
             if event.type == KEYDOWN:
                 if event.key == pygame.K_UP:
                     self.cat.vx = 0
-                    self.cat.vy = -5 # "1" = 1 frame/s
+                    self.cat.vy = -3 # "1" = 1 frame/s
                 elif event.key == pygame.K_DOWN:
                     self.cat.vx = 0
-                    self.cat.vy = 5
+                    self.cat.vy = 3
                 elif event.key == pygame.K_RIGHT:
-                    self.cat.vx = 5
+                    self.cat.vx = 3
                     self.cat.vy = 0
                 elif event.key == pygame.K_LEFT:
-                    self.cat.vx = -5
+                    self.cat.vx = -3
                     self.cat.vy = 0
                 elif event.key == pygame.K_h:
                     # help function/screen switch
@@ -135,7 +135,7 @@ class Model():
         self.help = False
         self.gameover = False
 
-        self.time = 30
+        self.time = 20
 
         timer_interval = 1000 # 1 second
         self.timer_event = pygame.USEREVENT + 1
@@ -229,7 +229,7 @@ class Cat(object):
 # need help with icecream class
 class Icecream():
     def __init__(self,size):
-        self._icecream_num = 10
+        self._icecream_num = 20
         self._grid_row = size[0]
         self.generate_icecream()
 
