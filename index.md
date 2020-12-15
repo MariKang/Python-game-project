@@ -16,3 +16,10 @@ We wanted to create a simple game that incorporated our design skills combined w
 <video>
     <source src="https://drive.google.com/file/d/1c4bvcBmtwof4GvCzyqHLAR7gxgtXW_zG/view?usp=sharing" type='video/mp4'>
 </video>
+
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="Semester3/Softdes/final project/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4">
+    <source src="Semester3/Softdes/final project/A Chubby Cat's Adventure 2020-12-15 17-24-34.mp4" type="video/mp4">
+  </video>
+</figure>
+
