@@ -13,5 +13,6 @@ We wanted to create a simple game that incorporated our design skills combined w
 3. Successfully collaborate in a remote setting - especially in terms of communication
 
 ## The Unique Features:
+
 ### Insert game play here
 
