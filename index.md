@@ -14,5 +14,5 @@ We wanted to create a simple game that incorporated our design skills combined w
 
 ## The Unique Features:
 
-### Insert game play here
+
 
