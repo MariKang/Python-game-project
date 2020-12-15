@@ -18,16 +18,22 @@ class Visual(object):
         """
 
         self._model = model
-        self._screen = pygame.display.set_mode(size)
+        self.screen = pygame.display.set_mode(size)
+        self.background_image = pygame.image.load("Artwork/Background.jpeg")
+        self.help_image = pygame.image.load("Artwork/RedoneHelp.png")
+        self.win_image = pygame.image.load("Artwork/Winner.png")
+        self.lose_image = pygame.image.load("Artwork/Loser.png")
+
         self.background_set()
+
+        self.font = pygame.font.SysFont(None, 100)
 
     # Function related to game display with background:
     def background_set(self):
-        self.background_image = pygame.image.load("Artwork/Background.jpeg")
         # surface = pygame.Surface((100,100))
 
-        self._screen.fill((255,255,255)) # fill screen with white --- may move to the init
-        self._screen.blit(self.background_image, (0,0))
+        self.screen.fill((255,255,255)) # fill screen with white --- may move to the init
+        self.screen.blit(self.background_image, (0,0))
         # pygame.display.update()
 
     # Functions related to the cat sprite:
@@ -42,10 +48,25 @@ class Visual(object):
         # self._screen.fill(pygame.Color(0,0,0))
         pygame.display.set_caption("A Chubby Cat's Adventure") # -- could be done in the init
 
-    def draw_winner_page(self):
-        """ Draw the winner page to the screen """
-        self._screen.fill((255,255,255))
 
+    def draw_end(self):
+        if model.time == 0:
+            self.screen.fill((255,255,255))
+            self.screen.blit(self.lose_image, (0,0))
+        else:
+            self.screen.fill((255,255,255))
+            self.screen.blit(self.win_image, (0,0))
+    
+    def draw_help_page(self):
+        """ Draw the help page to the screen """
+        self.screen.fill((255,255,255))
+        self.screen.blit(self.help_image, (0,0))
+    
+    def draw_timer(self):
+        text = self.font.render(str(model.time), True, (0, 128, 0))
+
+        text_rect = text.get_rect(center = self.screen.get_rect().center)
+        self.screen.blit(text, text_rect)
 
 class Controller(object):
 # what does this class do: takes the user's input from the up, down, left, and right arrows and translates them into motion of the cat sprite.
@@ -72,12 +93,23 @@ class Controller(object):
                     self.cat.vy = 0
                 elif event.key == pygame.K_h:
                     # help function/screen switch
-                    pass
+                    model.help = True
+                elif event.key == pygame.K_ESCAPE and model.help == True:
+                    model.help = False
                 elif event.key == pygame.K_q:
                     pygame.quit() # quit function needs editing
                 else:
                     self.cat.vy = 0
                     self.cat.vx = 0
+            elif event.type == model.timer_event:
+                if model.help == False:
+                    model.time -= 1
+
+                if model.time == 0:
+                    pygame.time.set_timer(model.timer_event, 0)
+                    model.gameover = True
+
+
 
 
 class Model():
@@ -97,6 +129,17 @@ class Model():
         self.icecream = Icecream(size)
         self._icecream_list = self.icecream._icecream_list
 
+        self.view = Visual(self, size)
+        self.controller = Controller(self)
+
+        self.help = False
+        self.gameover = False
+
+        self.time = 10
+
+        timer_interval = 1000 # 1 second
+        self.timer_event = pygame.USEREVENT + 1
+        pygame.time.set_timer(self.timer_event , timer_interval)
 
     # generate ice creams
     # cat touch ice creams
@@ -122,6 +165,26 @@ class Model():
     def get_icecreamlist(self):
         return self._icecream_list
 
+    
+    def play_loop(self):
+        if self.help == False and self.gameover == False:
+            self.cat.move_cat()
+            self.is_icecream()
+            self.view.background_set()
+            self.view.draw_timer()
+            self.cat.draw_cat_loc(view.screen)
+            self.icecream.draw_icecream_loc(view.screen)
+            if len(self.get_icecreamlist()) == 0:
+                self.gameover = True
+                 # this renders/updates to screen
+        elif self.gameover == True:
+            self.view.draw_end()
+        else:
+            self.view.draw_help_page()
+
+        pygame.display.flip()
+
+
 class Cat(object):
 # what does this class do: handles the back end of game play with five main sections to take into account:
 # 1. the cat sprite, 2. ice creams, 3. Point tracker, 4. Timer, 5. board setup
@@ -137,11 +200,16 @@ class Cat(object):
         self.width = size[0]
         self.height = size[1]
 
+        self.cat_image = pygame.image.load("Artwork/Cat for animation 1.png")
+
     # Function related to tracking the cat's location, marked with a square ([]) {marker can change}:
     def draw_cat_loc(self, screen):
-        
-        rect = pygame.Rect(self._pos[0], self._pos[1],25,25)
-        pygame.draw.rect(screen, (255,255,255), rect)
+
+        # pygame.draw.rect(screen, (255,255,255), rect)
+
+        screen.blit(self.cat_image, (self._pos[0]-80, self._pos[1]-70))
+
+    
 
     def move_cat(self):
         """
@@ -149,9 +217,9 @@ class Cat(object):
         """
         new_posx = self._pos[0] + self.vx
         new_posy = self._pos[1] + self.vy
-        if new_posx > 2 and new_posx < self.width-2:
+        if new_posx > 60 and new_posx < self.width-60:
             self._pos[0] = new_posx
-        if new_posy > 2 and new_posy < self.height-2:
+        if new_posy > 60 and new_posy < self.height-60:
             self._pos[1] = new_posy
         
         return self._pos
@@ -164,6 +232,8 @@ class Icecream():
         self._icecream_num = 10
         self._grid_row = size[0]
         self.generate_icecream()
+
+        self.icecream_image = pygame.image.load("Artwork/Ice cream for gameplay.png")
     # Function related to the ice creams:
         # input how many ice creams are involved
         # calculate the randomized locations per ice cream
@@ -174,10 +244,10 @@ class Icecream():
         """
         # This method can be used in visual to show the initial position of the ice cream.
         grid_list = []
-        for i in range(0, self._grid_row, 25):
-            for j in range(0, self._grid_row, 25):
+        for i in range(70, self._grid_row-70, 25):
+            for j in range(70, self._grid_row-70, 25):
                 grid_list += [[i, j]]
-        grid_list.remove([0,0])
+    
 
         random.shuffle(grid_list)
         self._icecream_list = grid_list[:self._icecream_num]
@@ -185,8 +255,8 @@ class Icecream():
 
     def draw_icecream_loc(self, screen):
         for pair in self._icecream_list:
-            rect = pygame.Rect(pair[0], pair[1],25,25)
-            pygame.draw.rect(screen, (0,0,0), rect)
+
+            screen.blit(self.icecream_image , (pair[0]-45, pair[1]-62))
 
 
 
@@ -221,16 +291,10 @@ if __name__ == '__main__':
         # for event in pygame.event.get(): # This will loop through a list of any keyboard or mouse events.
         #     if event.type == pygame.QUIT: # Checks if the red button in the corner of the window is clicked
         #         running = False # Ends the game loop
-            # Should call a controller method that checks what the event is       
+            # Should call a controller method that checks what the event is
+
         controller.arrow_keys()
-        model.cat.move_cat()
-        model.is_icecream()
-        view.background_set() 
-        model.cat.draw_cat_loc(view._screen)
-        model.icecream.draw_icecream_loc(view._screen)
-        if len(model.get_icecreamlist()) == 0:
-            view.draw_winner_page()
-        pygame.display.flip()# this renders/updates to screen
+        model.play_loop()
 
     # If we exit the loop this will execute and close our game
     pygame.quit() 
