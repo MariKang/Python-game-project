@@ -12,6 +12,8 @@ We wanted to create a simple game that incorporated our design skills combined w
 2. Explore aspects of python that we are unfamiliar with and step out of our comfort zones
 3. Successfully collaborate in a remote setting - especially in terms of communication
 
+![Image](https://drive.google.com/file/d/1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6/view?usp=sharing)*My caption*
+
 ## The Unique Features:
 
 <figure class="video_container">
