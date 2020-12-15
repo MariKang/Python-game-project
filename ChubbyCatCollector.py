@@ -42,7 +42,9 @@ class Visual(object):
         # self._screen.fill(pygame.Color(0,0,0))
         pygame.display.set_caption("A Chubby Cat's Adventure") # -- could be done in the init
 
-
+    def draw_winner_page(self):
+        """ Draw the winner page to the screen """
+        self._screen.fill((255,255,255))
 
 
 class Controller(object):
@@ -57,13 +59,17 @@ class Controller(object):
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == pygame.K_UP:
-                    self.cat.vy = -5 # "1" = 1 frame/s
+                    self.cat.vx = 0
+                    self.cat.vy = -1 # "1" = 1 frame/s
                 elif event.key == pygame.K_DOWN:
-                    self.cat.vy = 5
+                    self.cat.vx = 0
+                    self.cat.vy = 1
                 elif event.key == pygame.K_RIGHT:
-                    self.cat.vx = 5
+                    self.cat.vx = 1
+                    self.cat.vy = 0
                 elif event.key == pygame.K_LEFT:
-                    self.cat.vx = -5
+                    self.cat.vx = -1
+                    self.cat.vy = 0
                 elif event.key == pygame.K_h:
                     # help function/screen switch
                     pass
@@ -87,7 +93,7 @@ class Model():
         # Set the initial point in this game.
         # self._point = 0
 
-        self.cat = Cat()
+        self.cat = Cat(size)
         self.icecream = Icecream(size)
         self._icecream_list = self.icecream._icecream_list
 
@@ -112,18 +118,24 @@ class Model():
         b = point_b[1] - point_a[1]
         c = (a**2 + b**2)**(1/2)
         return c
+    
+    def get_icecreamlist(self):
+        return self._icecream_list
 
-class Cat():
+class Cat(object):
 # what does this class do: handles the back end of game play with five main sections to take into account:
 # 1. the cat sprite, 2. ice creams, 3. Point tracker, 4. Timer, 5. board setup
 
     # Functions related to the intial board
-    def __init__(self):
+    def __init__(self, size):
 
         # Set the initial position of the character and the number of ice cream. (this might change if we add stage so that the number of ice cream changes.)
         self._pos = [300, 300]
         self.vx = 0
         self.vy = 0
+
+        self.width = size[0]
+        self.height = size[1]
 
     # Function related to tracking the cat's location, marked with a square ([]) {marker can change}:
     def draw_cat_loc(self, screen):
@@ -135,8 +147,12 @@ class Cat():
         """
         Change the coordinate of the character location following the input direction.
         """
-        self._pos[0] += self.vx
-        self._pos[1] += self.vy
+        new_posx = self._pos[0] + self.vx
+        new_posy = self._pos[1] + self.vy
+        if new_posx > 2 and new_posx < self.width-2:
+            self._pos[0] = new_posx
+        if new_posy > 2 and new_posy < self.height-2:
+            self._pos[1] = new_posy
         
         return self._pos
 
@@ -212,7 +228,9 @@ if __name__ == '__main__':
         view.background_set() 
         model.cat.draw_cat_loc(view._screen)
         model.icecream.draw_icecream_loc(view._screen)
-        pygame.display.flip() # this renders/updates to screen
+        if len(model.get_icecreamlist()) == 0:
+            view.draw_winner_page()
+        pygame.display.flip()# this renders/updates to screen
 
     # If we exit the loop this will execute and close our game
     pygame.quit() 
