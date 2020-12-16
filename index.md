@@ -12,13 +12,17 @@ We wanted to create a simple game that incorporated our design skills combined w
 2. Explore aspects of python that we are unfamiliar with and step out of our comfort zones
 3. Successfully collaborate in a remote setting - especially in terms of communication
 
-![image](https://drive.google.com/uc?export=view&id=1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6)*At the start of gameplay:*
+![image](https://drive.google.com/uc?export=view&id=1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6)
+*At the start of gameplay:*
 
-![image](https://drive.google.com/uc?export=view&id=1VSuAVc0k0ZtXJV5413zp_YP-L2WgBDPF)*Near the end of gameplay:*
+![image](https://drive.google.com/uc?export=view&id=1VSuAVc0k0ZtXJV5413zp_YP-L2WgBDPF)
+*Near the end of gameplay:*
 
-![image](https://drive.google.com/uc?export=view&id=1Xss0wi1UCGDNKC3UwMgfxlPt-OkJ-Bvm)*Hopefully you win...*
+![image](https://drive.google.com/uc?export=view&id=1Xss0wi1UCGDNKC3UwMgfxlPt-OkJ-Bvm)
+*Hopefully you win...*
 
-![image](https://drive.google.com/uc?export=view&id=1CuyDsXaDHj0VPLDMZwPVc7SxgniVY9dl)*But it's okay if you don't.*
+![image](https://drive.google.com/uc?export=view&id=1CuyDsXaDHj0VPLDMZwPVc7SxgniVY9dl)
+*But it's okay if you don't.*
 
 ## The Unique Features:
 We wanted to incorporate a lot of small features that added to the gaming expirience adn understanding.
@@ -29,5 +33,10 @@ We wanted to incorporate a lot of small features that added to the gaming expiri
 <figure class="video_container">
   <iframe src="https://www.youtube.com/watch?v=DTMZAqHusDY" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+*Unfortunately, the video isn't able to attach directly to the site, but opening it into another window will show you live gameplay of the game.*
 
+## Installation:
+{plus github repo link here}
+
+## About Us:
 
