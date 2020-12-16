@@ -37,6 +37,7 @@ We wanted to incorporate a lot of small features that added to the gaming expiri
 <figure class="video_container">
   <iframe src="https://www.youtube.com/watch?v=DTMZAqHusDY" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+
 *Unfortunately, the video isn't able to attach directly to the site, but opening it into another window will show you live gameplay of the game.*
 
 ## Installation:
