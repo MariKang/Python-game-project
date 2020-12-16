@@ -12,7 +12,7 @@ We wanted to create a simple game that incorporated our design skills combined w
 2. Explore aspects of python that we are unfamiliar with and step out of our comfort zones
 3. Successfully collaborate in a remote setting - especially in terms of communication
 
-![image](https://drive.google.com/uc?export=view&id=1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6)*At the start of gameplay:*
+![image](https://drive.google.com/uc?export=view&id=1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6 = 250x250)*At the start of gameplay:*
 
 ![image](https://drive.google.com/uc?export=view&id=1VSuAVc0k0ZtXJV5413zp_YP-L2WgBDPF)*Near the end of gameplay:*
 
