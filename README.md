@@ -3,6 +3,7 @@
 ## About
 A simple 2-dimensional game developed using pygame library of a cat moving around and collecting ice cream in a given time.
 
+We wanted to create a simple game that incorporated our design skills combined with what we have learned in class. By creating a simple and cute type of gameplay, we wanted to show even a straightforward, not overly-complex game can be fun and spread smiles.
 
 ## Table of Contents
 >   * [About](#about)
