@@ -46,5 +46,19 @@ python ChubbyCatCollector.py
 
 ## Screenshots
 
+![image](https://drive.google.com/uc?export=view&id=1wYXIG-SPNZAbNIImqOfeDbsfqWUm_EU6)
 
+*At the start of gameplay:*
+
+![image](https://drive.google.com/uc?export=view&id=1VSuAVc0k0ZtXJV5413zp_YP-L2WgBDPF)
+
+*Near the end of gameplay:*
+
+![image](https://drive.google.com/uc?export=view&id=1Xss0wi1UCGDNKC3UwMgfxlPt-OkJ-Bvm)
+
+*Hopefully you win...*
+
+![image](https://drive.google.com/uc?export=view&id=1CuyDsXaDHj0VPLDMZwPVc7SxgniVY9dl)
+
+*But it's okay if you don't.*
 
