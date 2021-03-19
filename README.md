@@ -18,7 +18,7 @@ We wanted to create a simple game that incorporated our design skills combined w
 
 1. Clone the repo to a file
 ```bash
-git clone https://github.com/cknox0119/SoftdesF2020_FinalProject_Gaming.git
+git clone https://github.com/MariKang/Python-game-project.git
 ```
 
 2. Install packages
